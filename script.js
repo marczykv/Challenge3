@@ -11,9 +11,14 @@ function generatePassword() {
  
 //  added an error message if you dont meet the character length criteria 
   if (characterLength < 8 || characterLength > 128) {
+    alert("You must enter a value between 8 and 128 for character length.");
     return password;
   }
 
+  if (!upperCaseCheckInput && !lowerCaseCheck && !specialCaseCheck && !numberCheck) {
+    alert("You must select at least one character type.");
+    return password;
+  }
   for (var i = 0; i < characterLength; i++) {
     var validCharacter = false;
     var character;
@@ -70,8 +75,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   if (password == "") {
-
-    alert("You must enter a value between 8 and 128 for character length.")
+    return;
   }
   var passwordText = document.querySelector("#password");
 
