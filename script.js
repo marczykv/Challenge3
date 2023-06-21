@@ -7,8 +7,13 @@ function generatePassword() {
   var lowerCaseCheck = document.querySelector('#lowerCaseCheck').checked;
   var specialCaseCheck = document.querySelector('#specialCaseCheck').checked;
   var numberCheck = document.querySelector('#numberCheck').checked;
-
   var password = "";
+ 
+//  added an error message if you dont meet the character length criteria 
+  if (characterLength < 8 || characterLength > 128) {
+    return password;
+  }
+
   for (var i = 0; i < characterLength; i++) {
     var validCharacter = false;
     var character;
@@ -66,7 +71,7 @@ function writePassword() {
   var password = generatePassword();
   if (password == "") {
 
-    alert("You must enter a value for character length.")
+    alert("You must enter a value between 8 and 128 for character length.")
   }
   var passwordText = document.querySelector("#password");
 
